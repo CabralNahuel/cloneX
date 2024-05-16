@@ -1,0 +1,19 @@
+@font-face {
+    font-family: "ChirpRegular";
+    src: url("../../assets/ChirpRegular.ttf") format("truetype");
+  }@font-face {
+    font-family: "ChirpBold";
+    src: url("../../assets/ChirpBold.ttf");
+  }
+
+
+.menu-text {
+    font-family: "ChirpRegular", sans-serif;
+   
+    
+    
+  }
+
+  .menu-text:hover {
+    font-family: "ChirpBold";
+}

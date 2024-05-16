@@ -1,0 +1,59 @@
+@font-face {
+    font-family: "ChirpHeavy";
+    src: url("../../assets/ChirpHeavy.ttf");
+  }
+  @font-face {
+    font-family: "ChirpRegular";
+    src: url("../../assets/ChirpRegular.ttf");
+  }
+  @font-face {
+    font-family: "ChirpBold";
+    src: url("../../assets/ChirpBold.ttf");
+  }
+
+.notificacion{
+ 
+        padding: 2% 1%;
+       width: 100%;
+        display: flex;
+            flex-direction: column;
+        gap: 1%;
+}
+.box{
+    display: grid;
+    grid-template-columns: 52px auto;
+    justify-items: stretch;
+    align-items: baseline;
+    
+
+}
+
+
+.contenedorImagen{
+    width: 100%;
+    display: grid;
+
+}
+.card{
+    padding: 19px 7px;
+    display: grid;
+    justify-items: start;
+    gap: 19%;
+    border: none;
+}
+.svgImg{
+    max-width: 24px;
+}
+.img1{min-height: 50%}
+
+.etiquetaP{
+    font-family: ChirpRegular;
+    font-size: 15px;
+    width: 100%;
+    display: flex;
+    align-items: baseline;
+    gap: 2%;
+    justify-content: flex-start;
+    margin: 0;
+
+}

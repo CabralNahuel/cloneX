@@ -1,0 +1,48 @@
+*, 
+*::before
+*::after   {
+    margin:0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-size: 62.5%;
+
+} 
+
+
+a{
+    text-decoration: none;
+    font-family: inherit;
+    color:inherit
+}
+
+a:link, a:visited, a:active {
+    text-decoration:none;
+}
+
+ul, ol {
+    list-style-type: none;
+}
+
+
+p{
+    font-size: 1.8em;
+}
+
+img{
+    width: 100%;
+}
+h1,h2,h3,h4,h5{
+    margin: 0;
+}
+.contenedorLogin{
+    display: grid; 
+    height: 100vh;
+}
