@@ -60,7 +60,6 @@ export default function UserProfile() {
         padding: '8px', // Ajuste del padding
         transition: 'background-color 0.3s ease',
         cursor: 'pointer',
-        marginLeft: '-66px',
         width: '220px',
       }}
       onMouseEnter={handleMouseEnter}

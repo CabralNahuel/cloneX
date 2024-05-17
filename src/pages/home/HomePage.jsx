@@ -18,7 +18,7 @@ import TraerMensajes from "../../components/cards/CardTraerMensajes";
 import UnderlineTabs from "../../components/tabs/Tabs1.jsx";
 import { MdOutlineSettings } from "react-icons/md";
 
-const margenSup = "80px";
+const margenSup = "10px";
 
 export default function HomePage() {
   const [mensajes, setMensajes] = useState([]);
@@ -49,7 +49,7 @@ export default function HomePage() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Container maxWidth="lg" sx={{ marginLeft: "-10px", marginTop: "-80px"}}>
+      <Container maxWidth="lg" >
         <Grid container spacing={2}>
           {/* DrawerLeft */}
           <Grid
@@ -58,8 +58,6 @@ export default function HomePage() {
             md={3}
             sx={{
               marginTop: margenSup,
-              position: "sticky",
-              top: "0",
               alignSelf: "flex-start",
             }}
           >
