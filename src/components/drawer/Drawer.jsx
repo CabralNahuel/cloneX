@@ -41,7 +41,7 @@ import { IoPersonSharp } from "react-icons/io5";
 import ButtonDrawer from '../cards/ButtonDrawer';
 
 
-const drawerWidth = 40;
+const drawerWidth = "100%";
 const sizeIcon = 25;
 
 const menuItems = [  
@@ -52,7 +52,7 @@ const menuItems = [
   { text: 'Lists', icon: <RiFileList2Line size={sizeIcon} color='black' />, altIcon: < RiFileList2Fill size={sizeIcon} color='black' />, path: '/lists' },
   { text: 'Bookmarks', icon: <PiBookmarkSimpleBold size={sizeIcon} color='black' />, altIcon: <IoBookmark size={sizeIcon} color='black' />, path: '/bookmarks' },
   { text: 'Communities', icon: <BsPeople size={sizeIcon} color='black' />, altIcon: <BsPeopleFill size={sizeIcon} color='black' />, path: '/communities' },
-  { text: 'Premium', icon: <X  width="25px" style={{ marginBottom: '16px', marginLeft: '0px' }} />, altIcon: <X  width="25px" style={{ marginBottom: '16px', marginLeft: '0px' }} />, path: '/premium' },
+  { text: 'Premium', icon: <X  width="25px" style={{ marginBottom: '16px', marginLeft: -1 }} />, altIcon: <X  width="25px" style={{ marginBottom: '16px', marginLeft: '0px' }} />, path: '/premium' },
   { text: 'Profile', icon: <IoPersonOutline size={sizeIcon} color='black' />, altIcon: <IoPersonSharp size={sizeIcon} color='black' />, path: '/profile' },
   { text: 'More', icon: <CgMoreO size={sizeIcon} color='black' />, altIcon: <PiDotsThreeCircleFill size={sizeIcon} color='black' />, path: '/more' }
 ];
@@ -67,32 +67,32 @@ const menuItems = [
   
     return (
       <React.Fragment>
-        <CssBaseline />
-        <Container maxWidth="xl" >
-          <Box sx={{ display: 'flex', gap: '1' }}>
+        <CssBaseline  />
+        <Container maxWidth="xl">
+          <Box sx={{ display: 'grid' }}>
             <Box
               sx={{
                 width: drawerWidth,
-                flexShrink: 0,
-                '& .MuiDrawer-paper': {
-                  width: drawerWidth,
-                  boxSizing: 'border-box',
-                },
+                
+               
               }}
-              variant="permanent"
-              anchor="left"
-              display="flex"
+        
+              display="grid"
+           
+            
+              
             >
             
-              <Toolbar />
-              <List style={{ display: 'flex', flexDirection: 'column' }}>
-                <X  width="30px" style={{ marginBottom: '16px', marginLeft: '-50px' }} />
-                
+          
+              <Box sx={{display:"grid",marginLeft:2}} > 
+                  <X   width="30px" /></Box>
+              <List style={{ display: 'grid', justifyContent:"left" }}>
+       
                 {menuItems.map((item, index) => (
                   <ListItem
                     key={item.text}
-                    disablePadding
-                    style={{ marginBottom: '14px', fontSize: '20px', marginLeft: '-66px' }}
+                    
+                    style={{ marginBottom: '14px', fontSize: '20px', width:"60px"}}
                     selected={selectedItem === item.path}
                     className='menu-text'
                     onClick={() => handleItemClick(item.path)}
@@ -112,8 +112,7 @@ const menuItems = [
                 <Button
                   variant="contained"
                   sx={{
-                    marginLeft: '-66px',
-                    width:"220px",
+                    Width:"220px",
                     height: '50px',
                     borderRadius: '999px', // Hace que el botón sea redondeado
                     bgcolor: 'rgb(29, 155, 240)', // Color azul claro
@@ -124,6 +123,8 @@ const menuItems = [
                 >
                   Post
                 </Button >
+
+        
                 <Box sx={{marginTop: '2rem' }} >
                    <ButtonDrawer />   
                 </Box>
