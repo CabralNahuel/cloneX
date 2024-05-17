@@ -112,7 +112,7 @@ export default function ExplorePage() {
               </Box>
               <MdOutlineSettings size={25} color="black"  />
             </Box>
-            <UnderlineTabs />
+            <UnderlineTabs paramtro={["Para ti","Tendencia", "Noticias", "Entretenimiento", "Deporte"]}  />
             <Box sx={{ display: "Grid", gap: "4%", textAlign: "left" , marginTop:"3%"}}>
               <Box sx={{display:"flex", justifyContent:"space-between"}}>
                 <Card sx={{boxShadow:"none"}}>

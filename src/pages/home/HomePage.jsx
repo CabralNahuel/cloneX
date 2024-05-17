@@ -69,16 +69,17 @@ export default function HomePage() {
           </Grid>
           {/* Contenido centrado */}
           <Grid item xs={12} md={6} sx={{ marginTop: margenSup}}>
+            
             <Box
-              display="flex"
+              display="grid"
+              gridTemplateColumns="90% 10%"
               alignItems="center"
-              justifyContent="space-between"
+              height="47px"
               border="1px solid rgba(0, 0, 0, 0.1)" // Borde gris claro
               backgroundColor="transparent"
               borderRadius="1px"
-              padding="0.1rem"
             >
-              <UnderlineTabs />
+              <UnderlineTabs paramtro={["Para ti","Siguiendo"]}  />
               <MdOutlineSettings size={20} color="black" />
             </Box>
             <MandarMensajes onMessageSent={handleNuevoMensaje} />

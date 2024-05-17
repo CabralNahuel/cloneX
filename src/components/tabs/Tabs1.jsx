@@ -2,10 +2,10 @@ import { useState } from "react";
 import { MagicTabSelect } from "react-magic-motion";
 import { MdOutlineSettings } from "react-icons/md";
 
-const underlineTabs = ["For You", "Following", "Radios"];
 
-export default function UnderlineTabs() {
+export default function UnderlineTabs({paramtro}) {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const underlineTabs = paramtro;
 
   const tabsComponents = underlineTabs.map((tab, i) => {
     return (
@@ -14,8 +14,8 @@ export default function UnderlineTabs() {
         key={`tab-${tab}`}
         onClick={() => setSelectedIndex(i)}
         style={{
-          padding: "0.6rem 0.7rem",
-          margin: "0 2rem", // Ajuste del margen horizontal
+   
+          
           border: 0,
           cursor: "pointer",
           display: "flex", // Añadido para alinear contenido verticalmente
@@ -51,5 +51,5 @@ export default function UnderlineTabs() {
     );
   });
 
-  return <div style={{ display: "flex",justifyContent:"space-evenly" }}>{tabsComponents}</div>;
+  return paramtro.lenght <= 2? <div style={{ display: "flex", gap: "0.5rem" , height:"45px", justifyContent:"space-between" }}>{tabsComponents}</div>: <div style={{ display: "flex", gap: "0.5rem" , height:"45px", justifyContent:"space-around" }}>{tabsComponents}</div>;
 }
