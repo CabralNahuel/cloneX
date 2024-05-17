@@ -1,4 +1,6 @@
-# Proyecto Clon de Twitter
+# Proyecto Clon de Twitter 
+## Grupo 8 - Comisión 24303 - Codo a codo 2024
+
 
 ## Descripción
 
