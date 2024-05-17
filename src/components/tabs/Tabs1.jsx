@@ -51,5 +51,5 @@ export default function UnderlineTabs() {
     );
   });
 
-  return <div style={{ display: "flex", gap: "0.5rem" }}>{tabsComponents}</div>;
+  return <div style={{ display: "flex",justifyContent:"space-evenly" }}>{tabsComponents}</div>;
 }

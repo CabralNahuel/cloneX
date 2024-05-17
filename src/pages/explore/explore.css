@@ -1,0 +1,28 @@
+@font-face {
+    font-family: "ChirpHeavy";
+    src: url("../../assets/ChirpHeavy.ttf");
+  }
+  @font-face {
+    font-family: "ChirpRegular";
+    src: url("../../assets/ChirpRegular.ttf");
+  }
+  @font-face {
+    font-family: "ChirpBold";
+    src: url("../../assets/ChirpBold.ttf");
+  }
+  
+
+  .tipografiaNormal{
+    font-family: "ChirpRegular";
+    color: rgb(83, 100, 113);
+  }
+  
+  .tipografiaNegrita{
+    font-family: "ChirpHeavy";
+  }
+  h3{
+    font-size: 15px;
+    
+  }
+  p{font-size: 13px;
+margin: 0;}
