@@ -2,7 +2,7 @@
 
 ## Descripción
 
-Este proyecto es un clon de Twitter desarrollado con diversas tecnologías modernas. Permite a los usuarios crear publicaciones, interactuar con otros usuarios, y consumir contenido multimedia de diversas APIs.
+Este proyecto es un clon de Twitter en desarrollo. Permite a los usuarios crear publicaciones, interactuar con otros usuarios, y consumir contenido multimedia de diversas APIs.
 
 ## Tecnologías Utilizadas
 
@@ -20,10 +20,10 @@ Este proyecto es un clon de Twitter desarrollado con diversas tecnologías moder
 
 ## Integrantes del Grupo
 
-- Jorge Martinez - https://www.linkedin.com/in/jorge-martinez-3b13a1140/
-- Nahuel Cabral ()
-- Daniel García ()
-- Andrea Tassi - https://www.linkedin.com/in/andrea-tassi-it/
+- Jorge Martinez [![LinkedIn](https://img.icons8.com/color/24/000000/linkedin.png)](https://www.linkedin.com/in/jorge-martinez-3b13a1140/)
+- Nahuel Cabral [![LinkedIn](https://img.icons8.com/color/24/000000/linkedin.png)](https://www.linkedin.com/in/cabralnahuel/)
+- Daniel García [![LinkedIn](https://img.icons8.com/color/24/000000/linkedin.png)]()
+- Andrea Tassi [![LinkedIn](https://img.icons8.com/color/24/000000/linkedin.png)](https://www.linkedin.com/in/andrea-tassi-it/)
 
 ## Cómo Ejecutar el Proyecto
 
