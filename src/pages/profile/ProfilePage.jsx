@@ -90,7 +90,7 @@ export default function ProfilePage() {
               borderRadius="1px"
               padding="0.1rem"
             >
-              <UnderlineTabs />
+              
               <MdOutlineSettings size={20} color="black" />
             </Box>
             <BlueButton onClick={handleOpen}>Editar Perfil</BlueButton>
