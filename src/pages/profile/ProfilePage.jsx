@@ -16,9 +16,7 @@ import { getAuth } from "firebase/auth";
 
 import DrawerLeft from "../../components/drawer/Drawer.jsx";
 import { Search as SearchIcon } from "@mui/icons-material";
-import GiphyViewer from "../../components/apis/giphy/Giphy.jsx";
 import TraerMensajes from "../../components/cards/CardTraerMensajes.jsx";
-import UnderlineTabs from "../../components/tabs/Tabs1.jsx";
 import { MdOutlineSettings } from "react-icons/md";
 
 const margenSup = "80px";
