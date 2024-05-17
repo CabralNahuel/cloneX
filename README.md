@@ -20,13 +20,6 @@ Este proyecto es un clon de Twitter en desarrollo. Permite a los usuarios crear 
 - **Pexels**: [Pexels API](https://www.pexels.com/api/)
 - **Random User**: [Random User API](https://randomuser.me/)
 
-## Integrantes del Grupo
-
-- Jorge Martinez [![LinkedIn](https://img.icons8.com/color/24/000000/linkedin.png)](https://www.linkedin.com/in/jorge-martinez-3b13a1140/)
-- Nahuel Cabral [![LinkedIn](https://img.icons8.com/color/24/000000/linkedin.png)](https://www.linkedin.com/in/cabralnahuel/)
-- Daniel García [![LinkedIn](https://img.icons8.com/color/24/000000/linkedin.png)]()
-- Andrea Tassi [![LinkedIn](https://img.icons8.com/color/24/000000/linkedin.png)](https://www.linkedin.com/in/andrea-tassi-it/)
-
 ## Cómo Ejecutar el Proyecto
 
 1. Clona el repositorio:
@@ -89,3 +82,13 @@ Las contribuciones son bienvenidas. Por favor, sigue estos pasos:
 ## Licencia
 
 Este proyecto está licenciado bajo la [MIT License](LICENSE).
+
+
+
+## Integrantes del Grupo
+
+- Jorge Martinez [![LinkedIn](https://img.icons8.com/color/24/000000/linkedin.png)](https://www.linkedin.com/in/jorge-martinez-3b13a1140/)
+- Nahuel Cabral [![LinkedIn](https://img.icons8.com/color/24/000000/linkedin.png)](https://www.linkedin.com/in/cabralnahuel/)
+- Daniel García [![LinkedIn](https://img.icons8.com/color/24/000000/linkedin.png)]()
+- Andrea Tassi [![LinkedIn](https://img.icons8.com/color/24/000000/linkedin.png)](https://www.linkedin.com/in/andrea-tassi-it/)
+
