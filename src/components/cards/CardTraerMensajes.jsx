@@ -23,40 +23,45 @@ const TraerMensajes = ({ mensajes }) => {
           }}
         >
           <CardContent>
-            <Box display="flex" alignItems="center" mb={2} >
+            <Box display="flex" alignItems="center" mb={2}>
               <Avatar
                 alt={mensaje.correo}
                 src={mensaje.photoURL || ""}
                 sx={{ width: 40, height: 40, marginRight: "10px" }}
               />
-              <Box                 sx={{ textAlign:"justify",marginTop:"7%"}}
->
+              <Box sx={{ textAlign: "justify", marginTop: "7%" }}>
                 <p style={{ marginBottom: "6px", color: "gray" }}>
-                {mensaje.displayName != null && mensaje.displayName !== "" ? mensaje.displayName : mensaje.correo}
+                  {mensaje.displayName != null && mensaje.displayName !== "" ? mensaje.displayName : mensaje.correo}
                 </p>
                 <p>{mensaje.texto}</p>
-                <p></p>
               </Box>
             </Box>
+            {mensaje.imagen && (
+              <Box display="flex" justifyContent="center" mt={2}>
+                <img
+                  src={mensaje.imagen}
+                  alt="Imagen adjunta"
+                  style={{ width: "100%", borderRadius: "8px" }}
+                />
+              </Box>
+            )}
             <Box
               sx={{
                 height: "2rem",
                 borderRadius: 1,
                 display: "flex",
                 gap: "2%",
-                justifyContent:"space-between",
-                marginTop:"10%"
+                justifyContent: "space-between",
+                marginTop: "10%",
               }}
             >
-              {" "}
               <Megusta icon="comentario" color="rgb(29, 155, 240)" />
               <Megusta icon="favorite" color="rgb(249, 24, 128)" />
               <Megusta icon="repost" color="rgb(0, 186, 124)" />
               <Megusta icon="alcance" color="rgb(29, 155, 240)" />
-              <div style={{display:"flex"}}>
-                <Megusta icon="favorito"></Megusta>
-                <Megusta icon="compartir"></Megusta>
-
+              <div style={{ display: "flex" }}>
+                <Megusta icon="favorito" />
+                <Megusta icon="compartir" />
               </div>
             </Box>
           </CardContent>
@@ -64,6 +69,6 @@ const TraerMensajes = ({ mensajes }) => {
       ))}
     </div>
   );
+  
 };
-
 export default TraerMensajes;

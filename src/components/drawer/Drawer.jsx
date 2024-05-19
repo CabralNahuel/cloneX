@@ -52,7 +52,7 @@ const menuItems = [
   { text: 'Lists', icon: <RiFileList2Line size={sizeIcon} color='black' />, altIcon: < RiFileList2Fill size={sizeIcon} color='black' />, path: '/lists' },
   { text: 'Bookmarks', icon: <PiBookmarkSimpleBold size={sizeIcon} color='black' />, altIcon: <IoBookmark size={sizeIcon} color='black' />, path: '/bookmarks' },
   { text: 'Communities', icon: <BsPeople size={sizeIcon} color='black' />, altIcon: <BsPeopleFill size={sizeIcon} color='black' />, path: '/communities' },
-  { text: 'Premium', icon: <X  width="25px" style={{ marginBottom: '16px', marginLeft: -1 }} />, altIcon: <X  width="25px" style={{ marginBottom: '16px', marginLeft: '0px' }} />, path: '/premium' },
+  { text: 'Premium', icon: <X  width="25px"  marginLeft='0px' style={{ marginBottom: '16px'}} />, altIcon: <X  width="25px" style={{ marginBottom: '16px', marginLeft: -50, margin: 0 }} />, path: '/premium' },
   { text: 'Profile', icon: <IoPersonOutline size={sizeIcon} color='black' />, altIcon: <IoPersonSharp size={sizeIcon} color='black' />, path: '/profile' },
   { text: 'More', icon: <CgMoreO size={sizeIcon} color='black' />, altIcon: <PiDotsThreeCircleFill size={sizeIcon} color='black' />, path: '/more' }
 ];
@@ -72,41 +72,27 @@ const menuItems = [
           <Box sx={{ display: 'grid' }}>
             <Box
               sx={{
-                width: drawerWidth,
-                
-               
+                width: drawerWidth,          
               }}
-        
               display="grid"
-           
-            
-              
             >
-            
-          
-              <Box sx={{display:"grid",marginLeft:2}} > 
-                  <X   width="30px" /></Box>
+            <Box sx={{display:"grid",marginLeft:2}} > 
+              <X   width="30px" marginLeft= "12px" margin="10px" /></Box>
               <List style={{ display: 'grid', justifyContent:"left" }}>
-       
                 {menuItems.map((item, index) => (
-                  <ListItem
-                    key={item.text}
-                    
-                    style={{ marginBottom: '14px', fontSize: '20px', width:"60px"}}
-                    selected={selectedItem === item.path}
-                    className='menu-text'
-                    onClick={() => handleItemClick(item.path)}
-    
-                    
-                    
-                  >
-                    <ListItemButton component={Link} to={item.path} >
-                      <ListItemIcon >
-                        {selectedPath === item.path ? item.altIcon : item.icon}
-                        
-                      </ListItemIcon>
-                      <ListItemText/>{item.text}
-                    </ListItemButton>
+                <ListItem
+                  key={item.text}  
+                  style={{ marginBottom: '0px', fontSize: '20px', width:"60px"}}
+                  selected={selectedItem === item.path}
+                  className='menu-text'
+                  onClick={() => handleItemClick(item.path)}  
+                >
+                  <ListItemButton component={Link} to={item.path} >
+                    <ListItemIcon >
+                      {selectedPath === item.path ? item.altIcon : item.icon}     
+                    </ListItemIcon>
+                    <ListItemText/>{item.text}
+                  </ListItemButton>
                   </ListItem>
                 ))}
                 <Button
@@ -123,8 +109,6 @@ const menuItems = [
                 >
                   Post
                 </Button >
-
-        
                 <Box sx={{marginTop: '2rem' }} >
                    <ButtonDrawer />   
                 </Box>

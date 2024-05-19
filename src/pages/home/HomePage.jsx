@@ -49,7 +49,7 @@ export default function HomePage() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Container maxWidth="lg" >
+      <Container maxWidth="xl" sx={{ marginLeft: '-10px', marginTo: '-80px' }}>
         <Grid container spacing={2}>
           {/* DrawerLeft */}
           <Grid
@@ -57,8 +57,10 @@ export default function HomePage() {
             xs={12}
             md={3}
             sx={{
-              marginTop: margenSup,
-              alignSelf: "flex-start",
+              marginTop: margenSup, 
+              position: 'sticky', 
+              top: '0', 
+              alignSelf: 'flex-start' 
             }}
           >
             <DrawerLeft

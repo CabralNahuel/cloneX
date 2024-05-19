@@ -11,17 +11,33 @@ import {
 import PopUp from "./PopUp";
 import Navlogin from "./nav";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { setAuth } from '../../redux/authSlice.js'
 
 const auth = getAuth(appFirebase);
+
 
 const Login = () => {
   const [registrando, setRegistrando] = useState(false);
   const [mostrarPopUp, setMostrarPopUp] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const togglePopUp = () => {
     setMostrarPopUp(!mostrarPopUp);
   };
+
+  const actualizarInfoRedux = () => {
+    const infoCurrentUser = {
+      id: auth.currentUser.accessToken,
+      avatar: auth.currentUser.photoURL,
+      name: auth.currentUser.displayName,
+      email: auth.currentUser.email
+    }
+
+    dispatch(setAuth(infoCurrentUser)); 
+  }
+      
 
   const funcionDeAutenticacion = async (email, password) => {
     try {
@@ -30,6 +46,8 @@ const Login = () => {
       } else {
         await signInWithEmailAndPassword(auth, email, password);
       }
+      console.log("funcionDeAutenticacion: ", auth.currentUser);
+      actualizarInfoRedux();
       navigate("/home");
     } catch (error) {
       console.error("Error de autenticación:", error);
@@ -41,6 +59,8 @@ const Login = () => {
     const provider = new GoogleAuthProvider();
     try {
       await signInWithPopup(auth, provider);
+      console.log("registrarseConGoogle: ", auth.currentUser);
+      actualizarInfoRedux();
       navigate("/home");
     } catch (error) {
       console.error("Error al autenticarse con Google:", error);

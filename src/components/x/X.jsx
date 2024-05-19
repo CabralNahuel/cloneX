@@ -1,12 +1,18 @@
 import React from 'react';
 
 export default function X(props) {
-    const { width, style } = props;
+    const { width, style, margin, marginLeft } = props;
 
     return (
-        <img src="./X_logo_2023.svg" alt="" width={width} style={{ ...style,margin:15 }} />
+        <img 
+            src="./X_logo_2023.svg" 
+            alt="" 
+            width={width} 
+            style={{ 
+                ...style, 
+                margin: margin || 15,  // Use provided margin or default to 15
+                marginLeft: marginLeft  // Set marginLeft if provided
+            }} 
+        />
     );
 }
-
-
-//<img src="./X_logo_2023.svg" alt="" width="30px" style={{ marginBottom: '16px', marginLeft: '16px' }} />

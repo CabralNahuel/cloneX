@@ -1,12 +1,11 @@
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
-import IconButton from '@mui/material/IconButton';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Popper from '@mui/material/Popper';
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase/Conexion"; 
-import { Button, Fade, Paper, Typography } from '@mui/material';
-import { getAuth } from "firebase/auth";
+import { Button, Fade, Paper  } from '@mui/material';
+import { useSelector } from 'react-redux';
 
 
 export default function UserProfile() {
@@ -16,18 +15,18 @@ export default function UserProfile() {
 
   const navigate = useNavigate();
 
-  const auth = getAuth();
-  const user = auth.currentUser;
-  let avatar = '';
-  let name = '';
+  const user = useSelector((state) => state.authUser.auth);
+
+  const avatar = user.avatar;
+  const name = user.name;
   const correo = user.email;
   
-
+/*
   if (user) {
     avatar = user.photoURL || ''; // Si photoURL es null, asigna un valor vacío
     name = user.displayName || ''; // Si displayName es null, asigna un valor vacío
   }
-
+*/
   const handleLogout = () => {
     auth.signOut(); // Utiliza 'auth' desde 'Conexion.js'
     navigate("/");
@@ -60,7 +59,7 @@ export default function UserProfile() {
         padding: '8px', // Ajuste del padding
         transition: 'background-color 0.3s ease',
         cursor: 'pointer',
-        width: '220px',
+        width: '240px',
       }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -95,9 +94,9 @@ export default function UserProfile() {
         <p style={{ marginBottom: '0', color: 'gray', textAlign: 'left' }}>{correo}</p>
       </div>
       <div style={{ flex: 1 }}>
-      <IconButton > 
+      
         <MoreHorizIcon onClick={handlePopper}  />
-      </IconButton>
+      
       </div>
     </div>
   );
