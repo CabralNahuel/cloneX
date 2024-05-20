@@ -67,8 +67,7 @@ export default function ProfilePage() {
             md={3}
             sx={{
               marginTop: margenSup,
-              position: "sticky",
-              top: "0",
+             
               alignSelf: "flex-start",
             }}
           >

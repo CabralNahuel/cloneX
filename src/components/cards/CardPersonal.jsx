@@ -45,7 +45,7 @@ export default function CardPersonal() {
       />
       <CardContent>
       <Grid container spacing={2} alignItems="center">
-          <Grid item xs={12} sm={12} sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <Grid sx={{ display: 'flex', justifyContent: 'flex-end' }}>
             <Button
               variant="contained"
               sx={{

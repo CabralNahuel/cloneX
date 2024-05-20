@@ -6,8 +6,8 @@ export default function BlueButton({ children, ...props }) {
         <Button
             variant="contained"
             sx={{
-                marginLeft: '-66px',
-                width: '180px',
+                
+                width: '220px',
                 height: '50px',
                 borderRadius: '999px',
                 bgcolor: 'rgb(29, 155, 240)',

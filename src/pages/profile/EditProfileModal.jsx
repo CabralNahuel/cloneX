@@ -5,7 +5,7 @@ import EditProfile from "./EditProfile"; // Asegúrate de importar tu componente
 const EditProfileModal = ({ open, handleClose }) => {
   return (
     <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
-      <Box display="flex" justifyContent="space-between" alignItems="center" padding="16px">
+      <Box display="flex" justifyContent="space-between" alignItems="center" >
         <Button onClick={handleClose} color="primary" sx={{ fontWeight: 'bold', fontSize:'1.5rem' }}>
           X
         </Button>

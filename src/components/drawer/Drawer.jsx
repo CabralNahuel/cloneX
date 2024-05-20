@@ -68,30 +68,30 @@ const menuItems = [
     return (
       <React.Fragment>
         <CssBaseline  />
-        <Container maxWidth="xl">
-          <Box sx={{ display: 'grid' }}>
+        <Container xs={3} sm={2} sx={{padding:0,margin:0}}>
+          <Box sx={{ display: 'grid',  paddingLeft:0 }}>
             <Box
               sx={{
                 width: drawerWidth,          
               }}
               display="grid"
             >
-            <Box sx={{display:"grid",marginLeft:2}} > 
+            <Box sx={{display:"grid",marginLeft:2, width:"30px"}} > 
               <X   width="30px" marginLeft= "12px" margin="10px" /></Box>
-              <List style={{ display: 'grid', justifyContent:"left" }}>
+              <List style={{ display: 'grid', justifyContent:"left"}}>
                 {menuItems.map((item, index) => (
                 <ListItem
                   key={item.text}  
-                  style={{ marginBottom: '0px', fontSize: '20px', width:"60px"}}
+                  style={{ marginBottom: '0px', fontSize: '20px', width:"220px", textAlign:"left"}}
                   selected={selectedItem === item.path}
                   className='menu-text'
                   onClick={() => handleItemClick(item.path)}  
                 >
-                  <ListItemButton component={Link} to={item.path} >
+                  <ListItemButton component={Link} to={item.path} sx={{display:"grid", gridTemplateColumns:"auto auto auto"}} >
                     <ListItemIcon >
                       {selectedPath === item.path ? item.altIcon : item.icon}     
                     </ListItemIcon>
-                    <ListItemText/>{item.text}
+                    <ListItemText sx={{textAlign:"left" }}/>{item.text}
                   </ListItemButton>
                   </ListItem>
                 ))}

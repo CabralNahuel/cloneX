@@ -51,12 +51,12 @@ export default function UserProfile() {
   return (
     <div 
       style={{ 
-        display: 'flex', 
+        display:"flex",
         alignItems: 'center', 
-        gap: '1px',
+        gap: '10px',
         backgroundColor: isHovered ? '#f0f0f0' : 'transparent',
         borderRadius: '999px',
-        padding: '8px', // Ajuste del padding
+      
         transition: 'background-color 0.3s ease',
         cursor: 'pointer',
         width: '240px',
@@ -66,7 +66,7 @@ export default function UserProfile() {
     >
       <Popper
         // Note: The following zIndex style is specifically for documentation purposes and may not be necessary in your application.
-        sx={{ zIndex: 1200, padding: 4 }}
+        sx={{ zIndex: 1200, padding: 1 , width:240}}
         open= {open}
         anchorEl={anchorEl}
         placement='top-start'
@@ -88,7 +88,7 @@ export default function UserProfile() {
           </Fade>
         )}
       </Popper>
-      <Avatar alt={name} src={avatar} sx={{ width: 40, height: 40 }} />
+      <Avatar alt={name} src={avatar} sx={{ width: 40, height: 40}} />
       <div style={{ flex: 1 }}>
         <p style={{ marginBottom: '0', fontWeight: 'bold', color: 'black', textAlign: 'left' }}>{name}</p>
         <p style={{ marginBottom: '0', color: 'gray', textAlign: 'left' }}>{correo}</p>

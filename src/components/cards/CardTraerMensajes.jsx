@@ -41,7 +41,7 @@ const TraerMensajes = ({ mensajes }) => {
                 <img
                   src={mensaje.imagen}
                   alt="Imagen adjunta"
-                  style={{ width: "100%", borderRadius: "8px" }}
+                  style={{ width: "100%", height:"100%", borderRadius: "8px" }}
                 />
               </Box>
             )}
