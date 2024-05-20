@@ -28,9 +28,9 @@ const PexelsAPIComponent = () => {
   return (
     <div>
       <h2>Videos populares de Pexels</h2>
-      <div className="videos-container">
+      <div className="videos-container" >
         {videos.map((video) => (
-          <Card key={video.id} style={{ maxWidth: '300px', marginBottom: '20px' }}>
+          <Card key={video.id} style={{ maxWidth: '300px', maxHeight:"300px", marginBottom: '20px' }}>
             <CardMedia
               component="video"
               src={video.video_files[0].link}

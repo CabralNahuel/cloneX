@@ -14,18 +14,16 @@ export default function ProfilePage() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Container maxWidth="xl" sx={{ marginLeft: '-10px', marginTo: '-80px' }}>
+      <Container maxWidth="xl" >
         <Grid container spacing={2}>
           {/* DrawerLeft */}
           <Grid 
             item 
             xs={12} 
-            md={3} 
+            md={4} 
             sx={{ 
               marginTop: margenSup, 
-              position: 'sticky', 
-              top: '0', 
-              alignSelf: 'flex-start' 
+                           alignSelf: 'flex-start' 
             }}
           >
             <DrawerLeft selectedPath={'/messages'} />
@@ -33,20 +31,20 @@ export default function ProfilePage() {
           {/* Contenido centrado */}
           <Grid item xs={12} md={6} sx={{ marginTop: margenSup} }>
             <Box
-                display="flex"
+                display="grid"
                 alignItems="center"
-                justifyContent="space-between"
+                gap="1%"
+                justifyContent="start"
                 border="1px solid rgba(0, 0, 0, 0.1)" // Borde gris claro
                 backgroundColor="transparent"
                 borderRadius="1px"
-                padding="0.1rem "
+               
             >
-            <p>ESTO ES LA PAGINA DE MESSAGES</p>
             <PexelsAPIComponent />
             </Box>
             
           </Grid>
-          <Grid item xs={12} md={3} sx={{ marginTop: margenSup}}>
+          <Grid item xs={12} md={2} sx={{ marginTop: margenSup}}>
             {/* Contenido aquí */}
             <TextField
             fullWidth
