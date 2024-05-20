@@ -53,17 +53,16 @@ export default function ExplorePage() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Container maxWidth="lg" sx={{ marginLeft: "-10px", marginTop: "-80px" }}>
-        <Grid container spacing={2}>
+      <Container  sx={{ marginLeft: "-10px", marginTop: "-80px" }}>
+        <Grid container spacing={2} >
           {/* DrawerLeft */}
           <Grid
             item
             xs={12}
-            md={3}
+            md={4}
             sx={{
               marginTop: margenSup,
-              position: "sticky",
-              top: "0",
+             
               alignSelf: "flex-start",
             }}
           >
@@ -76,19 +75,11 @@ export default function ExplorePage() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-between",
+                gap:"2%"
              
               }}
             >
-              <Box
-                display="grid"
-                alignItems="center"
-                justifyContent="space-between"
-                border="0px solid rgba(0, 0, 0, 0.1)" // Borde gris claro
-                backgroundColor="transparent"
-                borderRadius="1px"
-                padding="0.1rem"
             
-              >
                 <TextField
                   fullWidth
                   variant="outlined"
@@ -100,7 +91,7 @@ export default function ExplorePage() {
                       </InputAdornment>
                     ),
                     sx: {
-                      width:500,
+                      width:"100%",
                       bgcolor: "#F1F1F1", // Fondo gris claro
                       borderRadius: "999px", // Borde redondeado
                       "& input": {
@@ -109,7 +100,7 @@ export default function ExplorePage() {
                     },
                   }}
   sx={{boxShadow:"none"}}               />
-              </Box>
+            
               <MdOutlineSettings size={25} color="black"  />
             </Box>
             <UnderlineTabs paramtro={["Para ti","Tendencia", "Noticias", "Entretenimiento", "Deporte"]}  />
@@ -164,7 +155,7 @@ export default function ExplorePage() {
               </Box>{" "}
             </Box>
           </Grid>
-          <Grid item xs={12} md={3} sx={{ marginTop: margenSup }}>
+          <Grid item xs={12} md={2} sx={{ marginTop: margenSup }}>
             <TextField
               fullWidth
               variant="outlined"
