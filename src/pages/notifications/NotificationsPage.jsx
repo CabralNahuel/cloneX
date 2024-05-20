@@ -25,11 +25,10 @@ export default function ProfilePage() {
           <Grid
             item
             xs={12}
-            md={3}
+            md={4}
             sx={{
               marginTop: margenSup,
-              position: "sticky",
-              top: "0",
+           
               alignSelf: "flex-start",
             }}
           >
