@@ -62,8 +62,7 @@ export default function HomePage() {
             md={4}
             sx={{
               marginTop: margenSup, 
-              position: 'sticky', 
-              top: '0', 
+             
               alignSelf: 'flex-start' 
             }}
           >
