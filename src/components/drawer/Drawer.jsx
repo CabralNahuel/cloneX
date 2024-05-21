@@ -8,6 +8,7 @@ import { Button, Container, ListItemIcon, ListItemText } from '@mui/material';
 import { Link } from 'react-router-dom';
 import ListItemButton from '@mui/material/ListItemButton';
 import "./estilo.css";
+import ModalPost from '../modals/modalPost';
 
 import X from '../x/X'
 
@@ -41,6 +42,7 @@ import { IoPersonSharp } from "react-icons/io5";
 import ButtonDrawer from '../cards/ButtonDrawer';
 
 
+
 const drawerWidth = "100%";
 const sizeIcon = 25;
 
@@ -58,17 +60,33 @@ const menuItems = [
 ];
 
 
-  export default function DrawerLeft({ selectedPath }) {
+  export default function DrawerLeft({ selectedPath, setMensajes }) {
     const [selectedItem, setSelectedItem] = useState('');
-  
+    const [open, setOpen] = useState(false);
+
+    const handleOpenModalPost = () => {
+      setOpen(true);
+    }
+
+    const handleCloseModalPost = () => {
+      setOpen(false);
+    }
+
+    const handleSetMensajes = (mensaje) => {
+      setMensajes(mensaje);
+      setOpen(false);
+    }
+
     const handleItemClick = (path) => {
       setSelectedItem(path);
     };
-  
+
+    
     return (
       <React.Fragment>
         <CssBaseline  />
         <Container xs={3} sm={2} sx={{padding:0,margin:0}}>
+          <ModalPost open={open} onClose={handleCloseModalPost} onMensajes={handleSetMensajes} />
           <Box sx={{ display: 'grid',  paddingLeft:0 }}>
             <Box
               sx={{
@@ -96,6 +114,7 @@ const menuItems = [
                   </ListItem>
                 ))}
                 <Button
+                  onClick={handleOpenModalPost}
                   variant="contained"
                   sx={{
                     Width:"220px",

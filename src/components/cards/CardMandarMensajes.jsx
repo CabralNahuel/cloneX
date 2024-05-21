@@ -7,6 +7,7 @@ import { AiOutlinePicture } from "react-icons/ai";
 import { AiTwotoneCloseCircle } from "react-icons/ai";
 
 const MandarMensajes = ({ onMessageSent }) => {
+  
   const user = useSelector((state) => state.authUser.auth);
 
   const avatar = user.avatar;
@@ -32,6 +33,7 @@ const MandarMensajes = ({ onMessageSent }) => {
     }
   };
 
+  
   const crearMensaje = async (e) => {
     e.preventDefault();
     const mensaje = {

@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { appFirebase } from "../../firebase/Conexion";
+import { collection, getDocs, query, orderBy } from "firebase/firestore";
+import { db } from "../../firebase/Conexion.js";
+
 import "./login.css";
 import {
   getAuth,
@@ -16,7 +19,6 @@ import { setAuth } from '../../redux/authSlice.js'
 
 const auth = getAuth(appFirebase);
 
-
 const Login = () => {
   const [registrando, setRegistrando] = useState(false);
   const [mostrarPopUp, setMostrarPopUp] = useState(false);
@@ -27,7 +29,7 @@ const Login = () => {
     setMostrarPopUp(!mostrarPopUp);
   };
 
-  const actualizarInfoRedux = () => {
+  const actualizarInfoRedux = async () => {
     const infoCurrentUser = {
       id: auth.currentUser.accessToken,
       avatar: auth.currentUser.photoURL,
@@ -36,6 +38,7 @@ const Login = () => {
     }
 
     dispatch(setAuth(infoCurrentUser)); 
+    
   }
       
 
