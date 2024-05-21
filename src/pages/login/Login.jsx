@@ -1,21 +1,19 @@
 import React, { useState } from "react";
 import { appFirebase } from "../../firebase/Conexion";
-import { collection, getDocs, query, orderBy } from "firebase/firestore";
-import { db } from "../../firebase/Conexion.js";
-
-import "./login.css";
 import {
-  getAuth,
   createUserWithEmailAndPassword,
+  getAuth,
+  GoogleAuthProvider,
   signInWithEmailAndPassword,
   signInWithPopup,
-  GoogleAuthProvider,
 } from "firebase/auth";
+import { Box, Grid } from "@mui/material";
+import "./login.css";
 import PopUp from "./PopUp";
 import Navlogin from "./nav";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
-import { setAuth } from '../../redux/authSlice.js'
+import { setAuth } from '../../redux/authSlice.js';
 
 const auth = getAuth(appFirebase);
 
@@ -34,13 +32,11 @@ const Login = () => {
       id: auth.currentUser.accessToken,
       avatar: auth.currentUser.photoURL,
       name: auth.currentUser.displayName,
-      email: auth.currentUser.email
-    }
+      email: auth.currentUser.email,
+    };
 
-    dispatch(setAuth(infoCurrentUser)); 
-    
-  }
-      
+    dispatch(setAuth(infoCurrentUser));
+  };
 
   const funcionDeAutenticacion = async (email, password) => {
     try {
@@ -49,7 +45,6 @@ const Login = () => {
       } else {
         await signInWithEmailAndPassword(auth, email, password);
       }
-      console.log("funcionDeAutenticacion: ", auth.currentUser);
       actualizarInfoRedux();
       navigate("/home");
     } catch (error) {
@@ -62,7 +57,6 @@ const Login = () => {
     const provider = new GoogleAuthProvider();
     try {
       await signInWithPopup(auth, provider);
-      console.log("registrarseConGoogle: ", auth.currentUser);
       actualizarInfoRedux();
       navigate("/home");
     } catch (error) {
@@ -72,27 +66,30 @@ const Login = () => {
 
   return (
     <>
-      <div className="loginContenedorPrincipal">
-        <div className="loginContenedor2">
-          <div className="tamañox">
-            <svg className="x" viewBox="0 0 24 24" width={700}>
+      <Box maxWidth="xl" m="5%">
+        <Grid alignItems="center" container columnSpacing={{ xs: 1, sm: 2, md: 3 } }>
+          
+          <Grid item xl={6} md xs={2}    >
+          <Box maxWidth="75%" margin="0 auto">
+            <svg  viewBox="0 0 24 24">
               <g>
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
               </g>
             </svg>
-          </div>
-          <div className="logeo">
-            <div className="contenedorTitulos">
-              <div className="contenedorTitulo"><p className="titulo">Lo que está</p>
-              <p className="titulo"> pasando ahora</p></div>
-              <h4 className="subtitulo">Únete Hoy</h4>
+            </Box>
+          </Grid>
+          <Grid item xl={6} md={7} xs  sx={{display:"grid",gap:"15px"}}>
+          
+               
+              <Box sx={{fontFamily:"ChirpHeavy", fontSize: "4rem",fontWeight: 600, alignContent: "center",textAlign: "left",letterSpacing: 2}}>Lo que está pasando ahora</Box>
+              <Box sx={{fontFamily:"ChirpHeavy", fontSize: "2.5rem",fontWeight: 600, alignContent: "center",textAlign: "left",letterSpacing: 2.5}}> Únete Hoy</Box>
+          
 
               <button
                 type="button"
                 className="botonAutenticacion mr-3"
                 onClick={registrarseConGoogle}
               >
-                {" "}
                 <svg
                   version="1.1"
                   xmlns="http://www.w3.org/2000/svg"
@@ -127,7 +124,6 @@ const Login = () => {
                 className="botonAutenticacion mr-3"
                 onClick={registrarseConGoogle}
               >
-                {" "}
                 <svg
                   version="1.1"
                   xmlns="http://www.w3.org/2000/svg"
@@ -165,21 +161,21 @@ const Login = () => {
                 </a>
                 .
               </div>
-            </div>
-            <div className="yaTienesCuenta">
-              <h4 className="h4Login">¿Ya tienes cuenta?</h4>
+           
+              <Box sx={{fontFamily:"ChirpBold", fontSize: "1.7rem", alignContent: "center",textAlign: "left"}}>¿Ya tienes cuenta?</Box>
               <button
                 className="botonAutenticacion yaTienesCuenta__boton"
                 onClick={() => {
                   setRegistrando(false);
                   setMostrarPopUp(true);
                 }}
-              >
+                >
                 Iniciar Sesión
               </button>
-            </div>
-          </div>
-        </div>
+            
+              </Grid>
+          </Grid>
+             
         {mostrarPopUp && (
           <PopUp
             showPopup={mostrarPopUp}
@@ -190,9 +186,9 @@ const Login = () => {
           />
         )}
         <div className="nav">
-          <Navlogin></Navlogin>
+          <Navlogin />
         </div>
-      </div>
+      </Box>
     </>
   );
 };

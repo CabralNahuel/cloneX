@@ -11,92 +11,6 @@
   src: url("../../assets/ChirpBold.ttf");
 }
 
-.loginContenedorPrincipal {
-  display: grid;
-  padding: 0 10%;
-  justify-items: center;
-}
-.loginContenedor2 {
-  margin-top: 3%;
-  display: grid;
-  grid-template-columns: auto auto;
-  align-items: center;
-  justify-content: center;
-  gap: 7%;
-}
-
-@media (max-width: 690px) {
-  .loginContenedor2 {
-    grid-template-columns: auto;
-    margin: 0 auto;
-    padding: 10%;
-  }
-}
-
-.logeo {
-  max-width: 728px;
-
-  display: grid;
-  justify-items: start;
-}
-@media (max-width: 690px) {
-  .logeo {
-    display: grid;
-  }
-}
-.x {
-  width: 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-@media (max-width: 690px) {
-  .x {
-    max-width: 17rem;
-  }
-}
-.tamañox {
-  max-height: 36rem;
-  display: flex;
-  justify-content: center;
-}
-@media (max-width: 690px) {
-  .tamañox {
-    max-height: 17.1rem;
-    width: 100vw;
-    justify-content: left;
-  }
-}
-.contenedorTitulos {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-.contenedorTitulo{
-margin-bottom: 5%;
-}
-.titulo {
-  line-height: 1em;
-  font-family: "ChirpHeavy";
-  font-size: 82px;
-  font-weight: 600;
-  align-content: center;
-  text-align: left;
-  letter-spacing: 5.2px;
-  margin-bottom: 0;
-
-}
-.subtitulo {
-  font-family: "ChirpHeavy";
-  width: 300px;
-  text-align: left;
-  margin-bottom: 3%;
-
-  letter-spacing: 5.2px;
-
-  font-size: 310%;
-}
 .botonAutenticacion {
   border: 1px solid;
   border-color: rgb(207, 217, 222);
@@ -118,21 +32,8 @@ margin-bottom: 5%;
   background-color: rgb(29, 155, 240);
   color: rgb(255, 255, 255);
 }
-.h4Login {
-  font-family: "ChirpBold";
-  color: rgb(15, 20, 25);
-  font-size: 1.7rem;
-}
-.yaTienesCuenta {
-  display: flex;
-  margin-top: 3rem;
-  max-height: 176px;
-  justify-items: start;
-  flex-direction: column;
-  gap: 20px;
-  justify-content: flex-end;
-  min-width: 300px
-}
+
+
 
 .yaTienesCuenta__boton {
   font-family: "ChirpBold";
