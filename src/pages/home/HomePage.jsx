@@ -60,12 +60,16 @@ export default function HomePage() {
             item
             xs={12}
             md={4}
-            sx={{
-              marginTop: margenSup, 
-              position: 'sticky', 
-              top: '0', 
-              alignSelf: 'flex-start' 
-            }}
+          
+            sx={(theme) => ({
+              marginTop: margenSup,
+              [theme.breakpoints.up('md')]: {
+                position: 'sticky',
+                top: '0',
+                alignSelf: 'flex-start',
+              },
+            })}
+          
           >
             <DrawerLeft 
               selectedPath={"/home"}
