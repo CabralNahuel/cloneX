@@ -15,9 +15,10 @@ import { getAuth } from "firebase/auth";
 import DrawerLeft from "../../components/drawer/Drawer.jsx";
 import { Search as SearchIcon } from "@mui/icons-material";
 import TraerMensajesConLike from "../../components/cards/CardTraerMensajesConLike.jsx";
+import UnderlineTabs from "../../components/tabs/Tabs1.jsx";
 import { MdOutlineSettings } from "react-icons/md";
 
-const margenSup = "80px";
+const margenSup = "10px";
 
 export default function NotificationPage() {
   const [mensajes, setMensajes] = useState([]);
@@ -45,47 +46,52 @@ export default function NotificationPage() {
     };
     obtenerMensajesConLike();
   }, []);
+  const handleNuevoMensaje = (mensaje) => {
+    setMensajes((prevMensajes) => [mensaje, ...prevMensajes]);
+  };
 
   return (
     <React.Fragment>
-      <CssBaseline />
-      <Container maxWidth="lg" sx={{ marginLeft: "-10px", marginTop: "-80px" }}>
-        <Grid container spacing={2}>
-          {/* DrawerLeft */}
-          <Grid
-            item
-            xs={12}
-            md={3}
-            sx={{
-              marginTop: margenSup,
-             
-              alignSelf: "flex-start",
-            }}
+    <CssBaseline />
+    <Container maxWidth="xl"> 
+      <Grid container spacing={2}>
+        {/* DrawerLeft */}
+        <Grid
+          item
+          xs={12}
+          md={4}
+          sx={(theme) => ({
+            marginTop: margenSup,
+            [theme.breakpoints.up('md')]: {
+              position: 'sticky',
+              top: '0',
+              alignSelf: 'flex-start',
+            },
+          })}
+        >
+          <DrawerLeft 
+            selectedPath={"/notifications"}
+            setMensajes={handleNuevoMensaje}
+          />
+        </Grid>
+        {/* Contenido centrado */}
+        <Grid item xs={12} md={6}>
+          <Box
+            display="grid"
+            gridTemplateColumns="90% 10%"
+            alignItems="center"
+            height="47px"
+            border="1px solid rgba(0, 0, 0, 0.1)" // Borde gris claro
+            backgroundColor="transparent"
+            borderRadius="1px"
           >
-            <DrawerLeft
-              selectedPath={"/home"}
-              sx={{ display: "flex", height: "100%" }}
-            />
-          </Grid>
-          {/* Contenido centrado */}
-          <Grid item xs={12} md={6} sx={{ marginTop: margenSup }}>
-            <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="space-between"
-              border="1px solid rgba(0, 0, 0, 0.1)" // Borde gris claro
-              backgroundColor="transparent"
-              borderRadius="1px"
-              padding="0.1rem"
-            >
-              
-              <MdOutlineSettings size={20} color="black" />
-            </Box>
-            
+            <UnderlineTabs paramtro={["Todas","Verificado", "Menciones"]}  />
+            <MdOutlineSettings size={20} color="black" />
+          </Box>
             {/* Mostrar los mensajes (ahora ordenados) */}
             <TraerMensajesConLike mensajes={mensajes} />
           </Grid>
-          <Grid item xs={12} md={3} sx={{ marginTop: margenSup }}>
+          <Grid item xs={12} md={2} sx={{ marginTop: margenSup }}>
             <TextField
               fullWidth
               variant="outlined"

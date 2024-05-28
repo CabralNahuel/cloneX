@@ -19,11 +19,13 @@ import { Search as SearchIcon } from "@mui/icons-material";
 import TraerMensajes from "../../components/cards/CardTraerMensajes.jsx";
 import { MdOutlineSettings } from "react-icons/md";
 
-const margenSup = "80px";
+const margenSup = "10px";
 
 export default function ProfilePage() {
   const [mensajes, setMensajes] = useState([]);
   const [open, setOpen] = useState(false);
+  const [name, setName] = useState("");
+  const [cantidadMensajes, setCantidadMensajes] = useState(0);
 
   useEffect(() => {
     const obtenerMensajes = async () => {
@@ -31,6 +33,8 @@ export default function ProfilePage() {
       const user = auth.currentUser;
       if (user) {
         const correo = user.email;
+        const name = user.displayName;
+        setName(name);
         const mensajesQuery = query(
           collection(db, "mensajes"),
           where("correo", "==", correo),
@@ -42,6 +46,7 @@ export default function ProfilePage() {
           ...doc.data(),
         }));
         setMensajes(mensajesList);
+        setCantidadMensajes(mensajesList.length);
       }
     };
     obtenerMensajes();
@@ -55,42 +60,82 @@ export default function ProfilePage() {
     setOpen(false);
   };
 
+  const handleNuevoMensaje = (mensaje) => {
+    setMensajes((prevMensajes) => [mensaje, ...prevMensajes]);
+    setCantidadMensajes((prevCantidad) => prevCantidad + 1);
+  };
+
   return (
     <React.Fragment>
       <CssBaseline />
-      <Container maxWidth="lg" sx={{ marginLeft: "-10px", marginTop: "-80px" }}>
+      <Container maxWidth="xl">
         <Grid container spacing={2}>
           {/* DrawerLeft */}
           <Grid
             item
             xs={12}
-            md={3}
-            sx={{
+            md={4}
+            sx={(theme) => ({
               marginTop: margenSup,
-             
-              alignSelf: "flex-start",
-            }}
+              [theme.breakpoints.up("md")]: {
+                position: "sticky",
+                top: "0",
+                alignSelf: "flex-start",
+              },
+            })}
           >
             <DrawerLeft
-              selectedPath={"/home"}
-              sx={{ display: "flex", height: "100%" }}
+              selectedPath={"/notifications"}
+              setMensajes={handleNuevoMensaje}
             />
           </Grid>
           {/* Contenido centrado */}
-          <Grid item xs={12} md={6} sx={{ marginTop: margenSup }}>
+          <Grid item xs={12} md={6}>
             <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="space-between"
+              display="grid"
+              gridTemplateColumns="90% 10%"
+              gridTemplateRows="70% 30%"
+              alignItems="start"
+              height="47px"
               border="1px solid rgba(0, 0, 0, 0.1)" // Borde gris claro
               backgroundColor="transparent"
               borderRadius="1px"
-              padding="0.1rem"
+              p={1} // Padding de 1 unidad
             >
-              
-              <MdOutlineSettings size={20} color="black" />
+              <Box
+                sx={{
+                  fontSize: "1rem",
+                  justifySelf: "left",
+                  fontWeight: "bold",
+                }}
+                gridRow="1"
+                gridColumn="1"
+              >
+                {name}
+              </Box>
+              <Box
+                sx={{ fontSize: "0.75rem", justifySelf: "left", color: "grey" }}
+                gridRow="2"
+                gridColumn="1"
+              >
+                {cantidadMensajes} Posts{" "}
+              </Box>
+              <MdOutlineSettings
+                size={20}
+                color="black"
+                sx={{ gridRow: "1", gridColumn: "2", justifySelf: "center" }}
+              />
             </Box>
-            <BlueButton onClick={handleOpen}>Editar Perfil</BlueButton>
+            <Box
+              sx={{
+                margin: "1rem",
+                
+              }}
+               
+              
+            >
+              <BlueButton onClick={handleOpen}>Editar Perfil</BlueButton>
+            </Box>
             <EditProfileModal open={open} handleClose={handleClose} />
             {/* Mostrar los mensajes (ahora ordenados) */}
             <TraerMensajes mensajes={mensajes} />
