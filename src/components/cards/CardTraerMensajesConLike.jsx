@@ -1,26 +1,12 @@
-import React from "react";
 import Avatar from "@mui/material/Avatar";
 import { Card, CardContent, Box } from "@mui/material";
-import Megusta from "../buttons/Megusta"; // Asegúrate de que la ruta sea correcta
-import OtrosIconos from "../buttons/OtrosIconos"; // Asegúrate de que la ruta sea correcta
-import { updateDoc, doc } from "firebase/firestore";
-import { db } from "../../firebase/Conexion.js";
+import * as React from "react";
+import Megusta from "../buttons/Megusta";
+import OtrosIconos from "../buttons/Iconos";
 
-const TraerMensajes = ({ mensajes, setMensajes }) => {
-  const handleLikeClick = async (mensajeId) => {
-    const mensajeRef = doc(db, "mensajes", mensajeId);
-    const mensaje = mensajes.find((msg) => msg.id === mensajeId);
-    const nuevoEstadoLike = !mensaje.like;
 
-    await updateDoc(mensajeRef, { like: nuevoEstadoLike });
-
-    setMensajes((prevMensajes) =>
-      prevMensajes.map((msg) =>
-        msg.id === mensajeId ? { ...msg, like: nuevoEstadoLike } : msg
-      )
-    );
-  };
-
+const TraerMensajesConLike = ({ mensajes }) => {
+  
   if (!mensajes) {
     return <div>No hay mensajes disponibles</div>;
   }
@@ -46,7 +32,7 @@ const TraerMensajes = ({ mensajes, setMensajes }) => {
               />
               <Box sx={{ textAlign: "justify", marginTop: "7%" }}>
                 <p style={{ marginBottom: "6px", color: "gray" }}>
-                  {mensaje.displayName != null && mensaje.displayName !== "" ? mensaje.displayName : mensaje.correo}
+                  {mensaje.displayName != null && mensaje.displayName !== "" && mensaje.like !== false ? mensaje.displayName : mensaje.correo}
                 </p>
                 <p>{mensaje.texto}</p>
               </Box>
@@ -56,7 +42,7 @@ const TraerMensajes = ({ mensajes, setMensajes }) => {
                 <img
                   src={mensaje.imagen}
                   alt="Imagen adjunta"
-                  style={{ width: "100%", height: "100%", borderRadius: "8px" }}
+                  style={{ width: "100%", height:"100%", borderRadius: "8px" }}
                 />
               </Box>
             )}
@@ -71,7 +57,7 @@ const TraerMensajes = ({ mensajes, setMensajes }) => {
               }}
             >
               <OtrosIconos icon="comentario" color="rgb(29, 155, 240)" />
-              <Megusta icon="favorite" color={mensaje.like ? "rgb(249, 24, 128)" : "gray"} onClick={() => handleLikeClick(mensaje.id)} />
+              <Megusta icon="favorite" color="rgb(249, 24, 128)" />
               <OtrosIconos icon="repost" color="rgb(0, 186, 124)" />
               <OtrosIconos icon="alcance" color="rgb(29, 155, 240)" />
               <div style={{ display: "flex" }}>
@@ -84,6 +70,6 @@ const TraerMensajes = ({ mensajes, setMensajes }) => {
       ))}
     </div>
   );
+  
 };
-
-export default TraerMensajes;
+export default TraerMensajesConLike;
