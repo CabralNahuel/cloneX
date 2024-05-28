@@ -1,13 +1,17 @@
 import React from "react";
 import { IconButton } from "@mui/material";
-import { Favorite } from "@mui/icons-material";
+import { Comment, Share, Repeat, Visibility, Bookmark } from "@mui/icons-material";
 
-const iconMegusta = {
-  favorite: Favorite,
+const Iconos = {
+  comentario: Comment,
+  repost: Repeat,
+  alcance: Visibility,
+  favorito: Bookmark,
+  compartir: Share,
 };
 
-const Megusta = ({ icon, color, onClick }) => {
-  const IconComponent = iconMegusta[icon];
+const OtrosIconos = ({ icon, color, onClick }) => {
+  const IconComponent = Iconos[icon];
 
   // Verifica si el componente existe
   if (!IconComponent) {
@@ -22,5 +26,5 @@ const Megusta = ({ icon, color, onClick }) => {
   );
 };
 
-export default Megusta;
+export default OtrosIconos;
 

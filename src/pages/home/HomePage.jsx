@@ -22,7 +22,6 @@ const margenSup = "10px";
 
 export default function HomePage() {
   const [mensajes, setMensajes] = useState([]);
-  
 
   useEffect(() => {
     // Función para obtener los mensajes desde Firebase
@@ -45,22 +44,18 @@ export default function HomePage() {
 
   const handleNuevoMensaje = (mensaje) => {
     setMensajes((prevMensajes) => [mensaje, ...prevMensajes]);
-
   };
-
-  
 
   return (
     <React.Fragment>
       <CssBaseline />
-      <Container maxWidth="xl" > 
+      <Container maxWidth="xl"> 
         <Grid container spacing={2}>
           {/* DrawerLeft */}
           <Grid
             item
             xs={12}
             md={4}
-          
             sx={(theme) => ({
               marginTop: margenSup,
               [theme.breakpoints.up('md')]: {
@@ -69,7 +64,6 @@ export default function HomePage() {
                 alignSelf: 'flex-start',
               },
             })}
-          
           >
             <DrawerLeft 
               selectedPath={"/home"}
@@ -77,8 +71,7 @@ export default function HomePage() {
             />
           </Grid>
           {/* Contenido centrado */}
-          <Grid item xs={12} md={6}   >
-            
+          <Grid item xs={12} md={6}>
             <Box
               display="grid"
               gridTemplateColumns="90% 10%"
@@ -93,7 +86,7 @@ export default function HomePage() {
             </Box>
             <MandarMensajes  onMessageSent={handleNuevoMensaje}/>
             {/* Mostrar los mensajes (ahora ordenados) */}
-            <TraerMensajes mensajes={mensajes} />
+            <TraerMensajes mensajes={mensajes} setMensajes={setMensajes} />
             {/* Mostrar GiphyViewer */}
             <GiphyViewer />
           </Grid>

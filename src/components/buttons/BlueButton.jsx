@@ -1,12 +1,11 @@
 
 import { Button } from '@mui/material';
 
-export default function BlueButton({ children, ...props }) {
+export default function BlueButton({ children, sx, ...props }) {
     return (
         <Button
             variant="contained"
             sx={{
-                
                 width: '220px',
                 height: '50px',
                 borderRadius: '999px',
@@ -14,6 +13,7 @@ export default function BlueButton({ children, ...props }) {
                 '&:hover': {
                     bgcolor: '#59a3f7',
                 },
+                ...sx, // Fusiona los estilos adicionales con los estilos originales
             }}
             {...props} // Pasa las props adicionales al componente Button
         >

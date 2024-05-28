@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { MagicTabSelect } from "react-magic-motion";
-import { MdOutlineSettings } from "react-icons/md";
+
 
 
 export default function UnderlineTabs({paramtro}) {
