@@ -1,12 +1,21 @@
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
-import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import { Button, Container, ListItemIcon, ListItemText } from '@mui/material';
+import {
+  Button,
+  Container,
+  Drawer,
+  IconButton,
+  ListItemIcon,
+  ListItemText,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material';
 import { Link } from 'react-router-dom';
 import ListItemButton from '@mui/material/ListItemButton';
+import MenuIcon from '@mui/icons-material/Menu';
 import "./estilo.css";
 import ModalPost from '../modals/modalPost';
 
@@ -63,6 +72,9 @@ const menuItems = [
   export default function DrawerLeft({ selectedPath, setMensajes }) {
     const [selectedItem, setSelectedItem] = useState('');
     const [open, setOpen] = useState(false);
+    const [openMobileDrawer, setOpenMobileDrawer] = useState(false);
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
     const handleOpenModalPost = () => {
       setOpen(true);
@@ -73,67 +85,99 @@ const menuItems = [
     }
 
     const handleSetMensajes = (mensaje) => {
-      setMensajes(mensaje);
+      if (setMensajes) {
+        setMensajes(mensaje);
+      }
       setOpen(false);
     }
 
     const handleItemClick = (path) => {
       setSelectedItem(path);
+      if (isMobile) {
+        setOpenMobileDrawer(false);
+      }
     };
 
+    const drawerContent = (
+      <Box sx={{ width: isMobile ? 280 : "100%", display: "grid", paddingLeft: 0 }}>
+        <Box sx={{ display: "grid", marginLeft: 2, width: "30px" }}>
+          <X width="30px" marginLeft="12px" margin="10px" />
+        </Box>
+        <List style={{ display: 'grid', justifyContent: "left" }}>
+          {menuItems.map((item) => (
+            <ListItem
+              key={item.text}
+              style={{ marginBottom: '0px', fontSize: '20px', width: "220px", textAlign: "left" }}
+              selected={selectedItem === item.path}
+              className='menu-text'
+              onClick={() => handleItemClick(item.path)}
+            >
+              <ListItemButton component={Link} to={item.path} sx={{ display: "grid", gridTemplateColumns: "auto auto auto" }}>
+                <ListItemIcon>
+                  {selectedPath === item.path ? item.altIcon : item.icon}
+                </ListItemIcon>
+                <ListItemText sx={{ textAlign: "left" }} />{item.text}
+              </ListItemButton>
+            </ListItem>
+          ))}
+          <Button
+            onClick={handleOpenModalPost}
+            variant="contained"
+            sx={{
+              Width: "220px",
+              height: '50px',
+              borderRadius: '999px',
+              bgcolor: 'rgb(29, 155, 240)',
+              '&:hover': {
+                bgcolor: '#59a3f7',
+              },
+            }}
+          >
+            Post
+          </Button >
+          <Box sx={{ marginTop: '2rem' }} >
+            <ButtonDrawer />
+          </Box>
+        </List>
+      </Box>
+    );
     
     return (
       <React.Fragment>
         <CssBaseline  />
         <Container xs={3} sm={2} sx={{padding:0,margin:0}}>
           <ModalPost open={open} onClose={handleCloseModalPost} onMensajes={handleSetMensajes} />
-          <Box sx={{ display: 'grid',  paddingLeft:0 }}>
-            <Box
-              sx={{
-                width: drawerWidth,          
-              }}
-              display="grid"
-            >
-            <Box sx={{display:"grid",marginLeft:2, width:"30px"}} > 
-              <X   width="30px" marginLeft= "12px" margin="10px" /></Box>
-              <List style={{ display: 'grid', justifyContent:"left"}}>
-                {menuItems.map((item, index) => (
-                <ListItem
-                  key={item.text}  
-                  style={{ marginBottom: '0px', fontSize: '20px', width:"220px", textAlign:"left"}}
-                  selected={selectedItem === item.path}
-                  className='menu-text'
-                  onClick={() => handleItemClick(item.path)}  
+          {isMobile ? (
+            <>
+              <Box sx={{ display: "flex", justifyContent: "flex-start", paddingY: 1 }}>
+                <IconButton
+                  aria-label="Abrir menu"
+                  onClick={() => setOpenMobileDrawer(true)}
+                  sx={{ color: "black" }}
                 >
-                  <ListItemButton component={Link} to={item.path} sx={{display:"grid", gridTemplateColumns:"auto auto auto"}} >
-                    <ListItemIcon >
-                      {selectedPath === item.path ? item.altIcon : item.icon}     
-                    </ListItemIcon>
-                    <ListItemText sx={{textAlign:"left" }}/>{item.text}
-                  </ListItemButton>
-                  </ListItem>
-                ))}
-                <Button
-                  onClick={handleOpenModalPost}
-                  variant="contained"
-                  sx={{
-                    Width:"220px",
-                    height: '50px',
-                    borderRadius: '999px', // Hace que el botón sea redondeado
-                    bgcolor: 'rgb(29, 155, 240)', // Color azul claro
-                    '&:hover': {
-                      bgcolor: '#59a3f7', // Color azul claro más claro al pasar el cursor
-                    },
-                  }}
-                >
-                  Post
-                </Button >
-                <Box sx={{marginTop: '2rem' }} >
-                   <ButtonDrawer />   
-                </Box>
-              </List>
+                  <MenuIcon />
+                </IconButton>
+              </Box>
+              <Drawer
+                anchor="left"
+                open={openMobileDrawer}
+                onClose={() => setOpenMobileDrawer(false)}
+              >
+                {drawerContent}
+              </Drawer>
+            </>
+          ) : (
+            <Box sx={{ display: 'grid', paddingLeft: 0 }}>
+              <Box
+                sx={{
+                  width: drawerWidth,
+                }}
+                display="grid"
+              >
+                {drawerContent}
+              </Box>
             </Box>
-          </Box>
+          )}
         </Container>
       </React.Fragment>
     );

@@ -7,6 +7,9 @@ import {
   Container,
   TextField,
   InputAdornment,
+  Card,
+  CardContent,
+  Skeleton,
 } from "@mui/material";
 import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import { db } from "../../firebase/Conexion.js";
@@ -22,20 +25,27 @@ const margenSup = "10px";
 
 export default function HomePage() {
   const [mensajes, setMensajes] = useState([]);
+  const [loadingMensajes, setLoadingMensajes] = useState(true);
 
   useEffect(() => {
     // Función para obtener los mensajes desde Firebase
     const obtenerMensajes = async () => {
-      const mensajesQuery = query(
-        collection(db, "mensajes"),
-        orderBy("timestamp", "desc")
-      );
-      const mensajesSnapshot = await getDocs(mensajesQuery);
-      const mensajesList = mensajesSnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setMensajes(mensajesList); // Ya están ordenados por timestamp descendente
+      try {
+        const mensajesQuery = query(
+          collection(db, "mensajes"),
+          orderBy("timestamp", "desc")
+        );
+        const mensajesSnapshot = await getDocs(mensajesQuery);
+        const mensajesList = mensajesSnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setMensajes(mensajesList);
+      } catch (error) {
+        console.error("Error al cargar mensajes:", error);
+      } finally {
+        setLoadingMensajes(false);
+      }
     };
 
     // Llamar a la función para obtener los mensajes cuando el componente se monta
@@ -46,6 +56,26 @@ export default function HomePage() {
     setMensajes((prevMensajes) => [mensaje, ...prevMensajes]);
   };
 
+  const feedSkeleton = (
+    <Box>
+      {[1, 2, 3].map((item) => (
+        <Card key={item} sx={{ marginTop: "10px", width: "100%", borderRadius: "8px" }}>
+          <CardContent>
+            <Box display="flex" alignItems="center" mb={2}>
+              <Skeleton variant="circular" width={40} height={40} />
+              <Box sx={{ width: "100%", marginLeft: 1.5 }}>
+                <Skeleton variant="text" width="30%" height={18} />
+                <Skeleton variant="text" width="90%" height={22} />
+                <Skeleton variant="text" width="75%" height={22} />
+              </Box>
+            </Box>
+            <Skeleton variant="rounded" width="100%" height={180} />
+          </CardContent>
+        </Card>
+      ))}
+    </Box>
+  );
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -55,7 +85,7 @@ export default function HomePage() {
           <Grid
             item
             xs={12}
-            md={4}
+            md={3}
             sx={(theme) => ({
               marginTop: margenSup,
               [theme.breakpoints.up('md')]: {
@@ -71,7 +101,7 @@ export default function HomePage() {
             />
           </Grid>
           {/* Contenido centrado */}
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={6} lg={7}>
             <Box
               display="grid"
               gridTemplateColumns="90% 10%"
@@ -85,13 +115,18 @@ export default function HomePage() {
               <MdOutlineSettings size={20} color="black" />
             </Box>
             <MandarMensajes  onMessageSent={handleNuevoMensaje}/>
-            {/* Mostrar los mensajes (ahora ordenados) */}
-            <TraerMensajes mensajes={mensajes} setMensajes={setMensajes} />
-            {/* Mostrar GiphyViewer */}
-            <GiphyViewer />
+            {loadingMensajes ? (
+              feedSkeleton
+            ) : (
+              <>
+                <TraerMensajes mensajes={mensajes} setMensajes={setMensajes} />
+                <GiphyViewer />
+              </>
+            )}
           </Grid>
-          <Grid item xs={12} md={2} sx={{ marginTop: margenSup }}>
+          <Grid item xs={12} md={3} lg={2} sx={{ marginTop: margenSup, display: { xs: "none", md: "block" } }}>
             <TextField
+              fullWidth
               variant="outlined"
               placeholder="Search..."
               InputProps={{
