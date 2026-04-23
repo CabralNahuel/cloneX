@@ -79,7 +79,7 @@ export default function HomePage() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Container maxWidth="xl"> 
+      <Container maxWidth="xl" disableGutters sx={{ px: { xs: 1, sm: 2, md: 3 } }}> 
         <Grid container spacing={2}>
           {/* DrawerLeft */}
           <Grid
@@ -104,12 +104,13 @@ export default function HomePage() {
           <Grid item xs={12} md={6} lg={7}>
             <Box
               display="grid"
-              gridTemplateColumns="90% 10%"
+              gridTemplateColumns={{ xs: "1fr auto", md: "90% 10%" }}
               alignItems="center"
               height="47px"
               border="1px solid rgba(0, 0, 0, 0.1)" // Borde gris claro
               backgroundColor="transparent"
               borderRadius="1px"
+              px={{ xs: 1, md: 0 }}
             >
               <UnderlineTabs paramtro={["Para ti","Siguiendo"]}  />
               <MdOutlineSettings size={20} color="black" />

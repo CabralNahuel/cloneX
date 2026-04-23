@@ -19,13 +19,13 @@ const PopUp = ({
   };
 
   return (
-    <Modal show={showPopup} onHide={togglePopup} centered>
-      <Modal.Header closeButton>
-        <Modal.Title>
+    <Modal show={showPopup} onHide={togglePopup} centered className="auth-modal">
+      <Modal.Header closeButton className="auth-modal__header">
+        <Modal.Title className="auth-modal__title">
           {registro ? "Crear Cuenta" : "Iniciar Sesión"}
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body className="d-grid modal-body gap-3 justify-content-center mb-5 mt-5">
+      <Modal.Body className="d-grid auth-modal__body gap-3 justify-content-center mb-2 mt-2">
         <button
           type="button"
           className="botonAutenticacion mr-3"
@@ -87,7 +87,7 @@ const PopUp = ({
             ? "Registrarse con Apple"
             : "Iniciar Sesión con Apple"}
         </button>
-        <Form  className="d-grid gap-3" onSubmit={handleAuth}>
+        <Form className="d-grid gap-3 auth-modal__form" onSubmit={handleAuth}>
           <Form.Group controlId="email">
             <Form.Label>Correo Electrónico</Form.Label>
             <Form.Control

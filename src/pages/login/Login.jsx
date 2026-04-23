@@ -66,11 +66,11 @@ const Login = () => {
 
   return (
     <>
-      <Box maxWidth="xl" m="5%">
-        <Grid alignItems="center" container columnSpacing={{ xs: 1, sm: 2, md: 3 } }>
+      <Box maxWidth="xl" sx={{ mx: "auto", my: { xs: 2, md: "5%" }, px: { xs: 2, sm: 3 } }}>
+        <Grid alignItems="center" container columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
           
-          <Grid item xl={6} md xs={2}    >
-          <Box maxWidth="75%" margin="0 auto">
+          <Grid item xl={6} md={5} xs={12}>
+          <Box maxWidth={{ xs: "56px", md: "75%" }} margin={{ xs: "0 auto 10px", md: "0 auto" }}>
             <svg  viewBox="0 0 24 24">
               <g>
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
@@ -78,11 +78,11 @@ const Login = () => {
             </svg>
             </Box>
           </Grid>
-          <Grid item xl={6} md={7} xs  sx={{display:"grid",gap:"15px"}}>
+          <Grid item xl={6} md={7} xs={12} sx={{display:"grid",gap:"15px", width: "100%", maxWidth: "640px", margin: { xs: "0 auto", md: 0 }}}>
           
                
-              <Box sx={{fontFamily:"ChirpHeavy", fontSize: "4rem",fontWeight: 600, alignContent: "center",textAlign: "left",letterSpacing: 2}}>Lo que está pasando ahora</Box>
-              <Box sx={{fontFamily:"ChirpHeavy", fontSize: "2.5rem",fontWeight: 600, alignContent: "center",textAlign: "left",letterSpacing: 2.5}}> Únete Hoy</Box>
+              <Box sx={{fontFamily:"ChirpHeavy", fontSize: { xs: "2.2rem", sm: "3rem", md: "4rem" },fontWeight: 600, alignContent: "center",textAlign: { xs: "center", md: "left" },letterSpacing: { xs: 1, md: 2 }}}>Lo que está pasando ahora</Box>
+              <Box sx={{fontFamily:"ChirpHeavy", fontSize: { xs: "1.7rem", sm: "2rem", md: "2.5rem" },fontWeight: 600, alignContent: "center",textAlign: { xs: "center", md: "left" },letterSpacing: { xs: 1.2, md: 2.5 }}}> Únete Hoy</Box>
           
 
               <button
@@ -162,7 +162,7 @@ const Login = () => {
                 .
               </div>
            
-              <Box sx={{fontFamily:"ChirpBold", fontSize: "1.7rem", alignContent: "center",textAlign: "left"}}>¿Ya tienes cuenta?</Box>
+              <Box sx={{fontFamily:"ChirpBold", fontSize: { xs: "1.3rem", md: "1.7rem" }, alignContent: "center",textAlign: { xs: "center", md: "left" }}}>¿Ya tienes cuenta?</Box>
               <button
                 className="botonAutenticacion yaTienesCuenta__boton"
                 onClick={() => {
