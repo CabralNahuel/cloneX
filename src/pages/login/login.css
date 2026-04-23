@@ -22,9 +22,16 @@
   background-color: white;
   border-radius: 50px;
   height: 38px;
+  width: 100%;
   max-width: 300px;
   min-width: 240px;
   gap: 10px;
+  box-sizing: border-box;
+  padding: 0 12px;
+  margin-right: 0 !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .crearCuenta {
   font-family: "ChirpBold";
@@ -124,8 +131,11 @@
 
 @media (max-width: 900px) {
   .botonAutenticacion {
-    min-width: 100%;
+    min-width: 0;
     max-width: 100%;
+    width: 100%;
+    font-size: 0.95rem;
+    padding: 0 10px;
   }
 
   .or,
