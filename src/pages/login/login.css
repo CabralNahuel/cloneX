@@ -63,21 +63,23 @@
   color: rgb(29, 155, 240);
 }
 .nav {
-  margin-top: 7%;
+  margin-top: 4%;
 }
 .navLogin {
   display: flex;
-  gap: 10px;
+  gap: 6px 14px;
   flex-flow: wrap;
-  justify-content: space-around;
-  line-height: 1;
+  justify-content: center;
+  line-height: 1.15;
   align-items: baseline;
-  height: 22%;
+  max-width: 760px;
+  margin: 0 auto;
+  opacity: 0.88;
 }
 .navA {
   width: max-content;
   text-decoration: none;
-  font-size: 1.3rem;
+  font-size: 0.92rem;
   color: rgb(83, 100, 113);
   font-family: "ChirpRegular";
   text-wrap: nowrap;
@@ -134,5 +136,19 @@
 
   .yaTienesCuenta__boton {
     font-size: 1.2rem;
+  }
+
+  .nav {
+    margin-top: 3%;
+  }
+
+  .navLogin {
+    gap: 4px 10px;
+    max-width: 100%;
+    line-height: 1.1;
+  }
+
+  .navA {
+    font-size: 0.72rem;
   }
 }
